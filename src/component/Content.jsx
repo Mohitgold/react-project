@@ -4,7 +4,7 @@ const Content = () => {
   return (
     <div className="container">
       <div className="row">
-        <div className="main-content">
+        <div className="main-content addclass">
           <h1>Hello There I m mohit</h1>
         </div>
       </div>
