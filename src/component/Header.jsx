@@ -25,6 +25,9 @@ const Header = () => {
             <Nav.Link as={NavLink} to="/contact">
               Contact
             </Nav.Link>
+            <Nav.Link as={NavLink} to="/blog">
+              Blog
+            </Nav.Link>
           </Nav>
         </Container>
       </Navbar>

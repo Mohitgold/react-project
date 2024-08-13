@@ -11,6 +11,11 @@ import "./main.scss";
 import "./App.css";
 import Service from "./component/Service";
 import Contact from "./component/Contact";
+import Blog from "./component/Blog";
+import SingleBlog from "./component/SingleBlog";
+import BlogParent from "./component/BlogParent";
+import ProductSingle from "./component/ProductSingle";
+import ProductParent from "./component/ProductParent";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -20,10 +25,21 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route path="/" element={<Main />} />
+          {/* <Route path="/" element={<Main />} /> */}
+          <Route path="/" element={<ProductParent />}>
+            <Route index element={<Main />} />
+            {/* <Route path=":id" element={<ProductSingle />} /> */}
+          </Route>
+          <Route path="/single-product">
+            <Route path=":id" element={<ProductSingle />} />
+          </Route>
           <Route path="/about" element={<About />} />
           <Route path="/service" element={<Service />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/blog" element={<BlogParent />}>
+            <Route index element={<Blog />} />
+            <Route path=":id" element={<SingleBlog />} />
+          </Route>
         </Routes>
         <Footer />
       </BrowserRouter>

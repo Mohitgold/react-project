@@ -6,11 +6,8 @@ import Content from "./Content";
 const Main = () => {
   return (
     <>
-   
-     
       <Slider />
       <Content />
-     
     </>
   );
 };
