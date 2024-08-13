@@ -2,8 +2,14 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Loader from "../component/Loader";
+import ModalPopup from "../component/ModalPopup";
 
-const ProductSingle = ({ handleCartCount }) => {
+const ProductSingle = ({
+  handleCartCount,
+  modalShow,
+  closeModal,
+  cartcount,
+}) => {
   const { id } = useParams();
   //   console.log(id);
   const [product, setProduct] = useState([]);
@@ -19,8 +25,10 @@ const ProductSingle = ({ handleCartCount }) => {
     fetchData();
   }, []);
   // console.log(product);
+  const isInCart = cartcount.some((item) => item.id === product.id);
   return (
     <div className="container py-5 page-min-height">
+      {modalShow && <ModalPopup show={modalShow} onHide={closeModal} />}
       {/* // show loader // */}
       {loading ? (
         <Loader />
@@ -39,12 +47,12 @@ const ProductSingle = ({ handleCartCount }) => {
               <b>Product Cagegory:</b> ${product.category}
             </h5>
             <Button
-              variant="primary"
+              variant={isInCart ? "danger" : "primary"}
               size="lg"
               active
               onClick={() => handleCartCount(product)}
             >
-              Add To Cart
+              {isInCart ? "Already in Cart" : "Add To Cart"}
             </Button>
           </div>
         </div>

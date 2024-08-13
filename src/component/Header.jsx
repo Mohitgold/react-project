@@ -9,8 +9,8 @@ import { IoMdCart } from "react-icons/io";
 
 const Header = ({ cartcount }) => {
   return (
-    <div>
-      <Navbar bg="dark" data-bs-theme="dark">
+    <>
+      <Navbar bg="dark" data-bs-theme="dark" sticky="top">
         <Container>
           <Navbar.Brand as={NavLink} to="/">
             Logo
@@ -43,7 +43,7 @@ const Header = ({ cartcount }) => {
           </Nav>
         </Container>
       </Navbar>
-    </div>
+    </>
   );
 };
 

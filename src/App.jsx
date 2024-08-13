@@ -20,10 +20,20 @@ import Cart from "./Pages/Cart";
 function App() {
   //Cart Value count
   const [cartcount, setCartCount] = useState([]);
-
+  const [modalShow, setModalShow] = useState(false);
   const handleCartCount = (info) => {
-    setCartCount([...cartcount, info]);
-    // console.log(info);
+    // Check if the product already exists in the cart
+    const productExists = cartcount.some((item) => item.id === info.id);
+    // console.log(productExists);
+    if (productExists) {
+      // alert("Product already added to cart!");
+      setModalShow(true);
+    } else {
+      setCartCount([...cartcount, info]);
+    }
+  };
+  const closeModal = () => {
+    setModalShow(false);
   };
   console.log(cartcount);
 
@@ -34,11 +44,25 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<Main handleCartCount={handleCartCount} />}
+            element={
+              <Main
+                handleCartCount={handleCartCount}
+                modalShow={modalShow}
+                closeModal={closeModal}
+                cartcount={cartcount}
+              />
+            }
           />
           <Route
             path="/single-product/:id"
-            element={<ProductSingle handleCartCount={handleCartCount} />}
+            element={
+              <ProductSingle
+                handleCartCount={handleCartCount}
+                modalShow={modalShow}
+                closeModal={closeModal}
+                cartcount={cartcount}
+              />
+            }
           />
           <Route path="/about" element={<About />} />
           <Route path="/service" element={<Service />} />

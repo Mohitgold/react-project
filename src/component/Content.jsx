@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 import Loader from "./Loader";
+import ModalPopup from "../component/ModalPopup";
+import Button from "react-bootstrap/Button";
 
-const Content = ({ handleCartCount }) => {
+const Content = ({ handleCartCount, cartcount, modalShow, closeModal }) => {
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true); // New loading state
@@ -35,6 +37,7 @@ const Content = ({ handleCartCount }) => {
 
   return (
     <div className="container page-min-height">
+      <ModalPopup show={modalShow} onHide={closeModal} />
       <div className="row py-5 gy-3">
         {loading && <Loader />}
         {error && <h1>{error}</h1>}
@@ -47,7 +50,8 @@ const Content = ({ handleCartCount }) => {
               description={info.description}
               id={info.id}
               handleCartCount={handleCartCount}
-              data={data}
+              info={info}
+              cartcount={cartcount}
             />
           </div>
         ))}
