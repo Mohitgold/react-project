@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 
-const ProductCard = ({ title, image, price, description, id }) => {
+const ProductCard = ({ title, image, price, id, handleCartCount, data }) => {
   return (
     <Card className="product-card p-2">
       <Card.Img variant="top" src={image} />
@@ -14,7 +14,9 @@ const ProductCard = ({ title, image, price, description, id }) => {
         </Card.Title>
         {/* <Card.Text>{description}</Card.Text> */}
         <p>Price: ${price}</p>
-        <Button variant="primary">Add To Cart</Button>
+        <Button variant="primary" onClick={() => handleCartCount(data)}>
+          Add To Cart
+        </Button>
       </Card.Body>
     </Card>
   );

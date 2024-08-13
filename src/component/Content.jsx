@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
+import Loader from "./Loader";
 
-const Content = () => {
+const Content = ({ handleCartCount }) => {
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true); // New loading state
 
   useEffect(() => {
     // const fetchData = async () => {
@@ -22,6 +24,8 @@ const Content = () => {
         setData(result);
       } catch (error) {
         setError(error.message);
+      } finally {
+        setLoading(false); // Set loading to false when done
       }
     };
 
@@ -30,9 +34,10 @@ const Content = () => {
   // console.log(data);
 
   return (
-    <div className="container">
+    <div className="container page-min-height">
       <div className="row py-5 gy-3">
-        <h1>{error}</h1>
+        {loading && <Loader />}
+        {error && <h1>{error}</h1>}
         {data.map((info, index) => (
           <div key={index} className="col-md-4">
             <ProductCard
@@ -41,6 +46,8 @@ const Content = () => {
               price={info.price}
               description={info.description}
               id={info.id}
+              handleCartCount={handleCartCount}
+              data={data}
             />
           </div>
         ))}
