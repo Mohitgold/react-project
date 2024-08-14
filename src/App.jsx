@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { createContext, useState } from "react";
 // import reactLogo from "./assets/react.svg";
 // import viteLogo from "/vite.svg";
 import Main from "./Pages/Main";
@@ -16,6 +16,8 @@ import SingleBlog from "./Pages/SingleBlog";
 import BlogParent from "./component/BlogParent";
 import ProductSingle from "./Pages/ProductSingle";
 import Cart from "./Pages/Cart";
+
+export const ecomContext = createContext(null);
 
 function App() {
   //Cart Value count
@@ -40,40 +42,24 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Header cartcount={cartcount} />
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Main
-                handleCartCount={handleCartCount}
-                modalShow={modalShow}
-                closeModal={closeModal}
-                cartcount={cartcount}
-              />
-            }
-          />
-          <Route
-            path="/single-product/:id"
-            element={
-              <ProductSingle
-                handleCartCount={handleCartCount}
-                modalShow={modalShow}
-                closeModal={closeModal}
-                cartcount={cartcount}
-              />
-            }
-          />
-          <Route path="/about" element={<About />} />
-          <Route path="/service" element={<Service />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/blog" element={<BlogParent />}>
-            <Route index element={<Blog />} />
-            <Route path=":id" element={<SingleBlog />} />
-          </Route>
-          <Route path="/cart" element={<Cart />} />
-        </Routes>
-        <Footer />
+        <ecomContext.Provider
+          value={{ cartcount, modalShow, closeModal, handleCartCount }}
+        >
+          <Header />
+          <Routes>
+            <Route path="/" element={<Main />} />
+            <Route path="/single-product/:id" element={<ProductSingle />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/service" element={<Service />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/blog" element={<BlogParent />}>
+              <Route index element={<Blog />} />
+              <Route path=":id" element={<SingleBlog />} />
+            </Route>
+            <Route path="/cart" element={<Cart />} />
+          </Routes>
+          <Footer />
+        </ecomContext.Provider>
       </BrowserRouter>
     </>
   );

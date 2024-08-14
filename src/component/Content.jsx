@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 import Loader from "./Loader";
 import ModalPopup from "../component/ModalPopup";
 import Button from "react-bootstrap/Button";
+import { ecomContext } from "../App";
 
-const Content = ({ handleCartCount, cartcount, modalShow, closeModal }) => {
+const Content = () => {
+  const { modalShow, closeModal, cartcount } = useContext(ecomContext);
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true); // New loading state
@@ -49,7 +51,6 @@ const Content = ({ handleCartCount, cartcount, modalShow, closeModal }) => {
               price={info.price}
               description={info.description}
               id={info.id}
-              handleCartCount={handleCartCount}
               info={info}
               cartcount={cartcount}
             />

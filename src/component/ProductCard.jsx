@@ -1,17 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
+import { ecomContext } from "../App";
 
-const ProductCard = ({
-  title,
-  image,
-  price,
-  id,
-  handleCartCount,
-  info,
-  cartcount,
-}) => {
+const ProductCard = ({ image, id, title, price, info }) => {
+  const { handleCartCount, cartcount } = useContext(ecomContext);
   const isInCart = cartcount.some((item) => item.id === id);
   return (
     <Card className="product-card p-2">

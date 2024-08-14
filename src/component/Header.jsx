@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -6,8 +6,10 @@ import { NavLink } from "react-router-dom";
 import Badge from "react-bootstrap/Badge";
 import Button from "react-bootstrap/Button";
 import { IoMdCart } from "react-icons/io";
+import { ecomContext } from "../App";
 
-const Header = ({ cartcount }) => {
+const Header = () => {
+  const { cartcount } = useContext(ecomContext);
   return (
     <>
       <Navbar bg="dark" data-bs-theme="dark" sticky="top">

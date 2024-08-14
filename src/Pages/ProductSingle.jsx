@@ -1,15 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Loader from "../component/Loader";
 import ModalPopup from "../component/ModalPopup";
+import { ecomContext } from "../App";
 
-const ProductSingle = ({
-  handleCartCount,
-  modalShow,
-  closeModal,
-  cartcount,
-}) => {
+const ProductSingle = () => {
+  const { handleCartCount, modalShow, closeModal, cartcount } =
+    useContext(ecomContext);
   const { id } = useParams();
   //   console.log(id);
   const [product, setProduct] = useState([]);
