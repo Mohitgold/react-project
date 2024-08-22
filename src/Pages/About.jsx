@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import AccordianData from "./AccordianData";
+import AccordianData from "../component/AccordianData";
 import { TiArrowSortedUp } from "react-icons/ti";
 
 import { TiArrowSortedDown } from "react-icons/ti";

@@ -1,0 +1,10 @@
+.navbar-nav {
+    &__cart {
+        svg {
+            font-size: 25px;
+        }
+        .badge {
+            font-size: 15px;
+        }
+    }
+}
