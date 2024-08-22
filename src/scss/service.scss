@@ -1,0 +1,22 @@
+.btns {
+    display: flex;
+    gap: 15px;
+    button {
+        padding: 10px 15px;
+        border: 1px solid;
+        border-radius: 15px;
+    }
+}
+
+.dot-wrapper {
+    height: 600px;
+    border: 1px solid;
+    position: relative;
+}
+
+.singledot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    position: absolute;
+}

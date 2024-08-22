@@ -1,0 +1,13 @@
+.cart-product {
+    &__img {
+        height: 100px;
+        width: 100px;
+        object-fit: contain;
+    }
+    &__remove {
+        font-size: 20px;
+        display: flex;
+        padding: 10px;
+        margin-left: 25px;
+    }
+}

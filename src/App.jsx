@@ -37,13 +37,19 @@ function App() {
   const closeModal = () => {
     setModalShow(false);
   };
-  console.log(cartcount);
+  // console.log(cartcount);
 
   return (
     <>
       <BrowserRouter>
         <ecomContext.Provider
-          value={{ cartcount, modalShow, closeModal, handleCartCount }}
+          value={{
+            cartcount,
+            modalShow,
+            closeModal,
+            handleCartCount,
+            setCartCount,
+          }}
         >
           <Header />
           <Routes>
