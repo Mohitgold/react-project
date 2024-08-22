@@ -16,6 +16,7 @@ import SingleBlog from "./Pages/SingleBlog";
 import BlogParent from "./component/BlogParent";
 import ProductSingle from "./Pages/ProductSingle";
 import Cart from "./Pages/Cart";
+import Avatar from "./Pages/Avatar";
 
 export const ecomContext = createContext(null);
 
@@ -63,6 +64,7 @@ function App() {
               <Route path=":id" element={<SingleBlog />} />
             </Route>
             <Route path="/cart" element={<Cart />} />
+            <Route path="/avatar" element={<Avatar />} />
           </Routes>
           <Footer />
         </ecomContext.Provider>
